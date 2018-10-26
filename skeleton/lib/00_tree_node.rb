@@ -20,6 +20,7 @@ class PolyTreeNode
     
     if @parent == nil
       @parent = parent_node
+      #check for child duplicity on parent node
       parent_node.children.include?(self) ? parent_node.children : parent_node.children << self
     else
       @parent.children.delete(self)
