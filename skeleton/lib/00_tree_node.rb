@@ -40,6 +40,27 @@ class PolyTreeNode
     child_node.parent = nil
   end
   
+  def dfs(target_value)
+    return self if self.value == target_value
+    # return nil if self == []
+    self.children.each do |child|
+      search_res = child.dfs(target_value)
+      return search_res unless search_res.nil?
+    end
+    nil
+  end
+  
+  def bfs(target_value)
+    new_array = []
+    new_array << self
+    
+    until new_array.empty?
+      el = new_array.shift
+      return el if el.value == target_value
+      el.children.each { |child| new_array << child }
+    end
+  end
+  
   # private
   attr_reader :value, :children, :parent
 end
