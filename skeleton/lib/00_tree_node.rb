@@ -36,7 +36,7 @@ class PolyTreeNode
   end
   
   def remove_child(child_node)
-    self.children.delete(child_node)
+    self.children.include?(child_node) ? self.children.delete(child_node) : raise
     child_node.parent = nil
   end
   
